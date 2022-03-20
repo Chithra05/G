@@ -1,0 +1,16 @@
+!pip install ipython-autotime
+%load_ext autotime
+!pip install bing-image-downloader
+!mkdir images
+from bing_image_downloader import downloader
+downloader.download("pretty roses",limit=30,output_dir='images',
+                    adult_filter_off=True)
+!pip install DeepImageSearch -q
+import numpy as np
+import pandas as pd
+from DeepImageSearch import Index,LoadData,SearchImage
+image_list = LoadData().from_folder(folder_list = ['/content/images/pretty roses'])
+Index(image_list).Start()
+image_list[0]
+SearchImage().get_similar_images(image_path='/content/images/pretty roses/Image_1.jpg',number_of_images=5)
+SearchImage().plot_similar_images(image_path = '/content/images/pretty roses/Image_1.jpg')
